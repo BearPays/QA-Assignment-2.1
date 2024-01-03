@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="ToDoListSuite">
+    <test name="BasicTests">
+        <groups>
+            <run>
+                <include name="basic"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="ToDoApp.TestNGTests"/>
+        </classes>
+    </test>
+    <test name="ParameterizedTests">
+        <parameter name="projectName" value="Study"/>
+        <groups>
+            <run>
+                <include name="parameterized"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="ToDoApp.TestNGTests"/>
+        </classes>
+    </test>
+    <test name="ExceptionTests">
+        <groups>
+            <run>
+                <include name="exception"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="ToDoApp.TestNGTests"/>
+        </classes>
+    </test>
+    <test name="ParallelTests" parallel="methods">
+        <groups>
+            <run>
+                <include name="parallel"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="ToDoApp.TestNGTests"/>
+        </classes>
+    </test>
+</suite>
