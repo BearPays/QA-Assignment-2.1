@@ -1,45 +1,49 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
-<suite name="ToDoListSuite">
-    <test name="BasicTests">
+<suite name="ToDoAppSuite">
+
+    <test name="FileOperationsTests">
         <groups>
             <run>
-                <include name="basic"/>
+                <include name="file-operations"/>
             </run>
         </groups>
         <classes>
             <class name="ToDoApp.TestNGTests"/>
         </classes>
     </test>
-    <test name="ParameterizedTests">
-        <parameter name="projectName" value="Study"/>
+
+    <test name="TaskManipulationsTests">
         <groups>
             <run>
-                <include name="parameterized"/>
+                <include name="task-manipulations"/>
             </run>
         </groups>
         <classes>
             <class name="ToDoApp.TestNGTests"/>
         </classes>
     </test>
-    <test name="ExceptionTests">
+
+    <test name="TaskSearchTests">
         <groups>
             <run>
-                <include name="exception"/>
+                <include name="task-search"/>
             </run>
         </groups>
         <classes>
             <class name="ToDoApp.TestNGTests"/>
         </classes>
     </test>
-    <test name="ParallelTests" parallel="methods">
+
+    <test name="TaskStatusTests">
         <groups>
             <run>
-                <include name="parallel"/>
+                <include name="task-status"/>
             </run>
         </groups>
         <classes>
             <class name="ToDoApp.TestNGTests"/>
         </classes>
     </test>
+
 </suite>

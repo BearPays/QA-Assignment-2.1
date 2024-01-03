@@ -61,5 +61,20 @@ public class ToDoList {
     public Task getTaskInToDo(int index) {
         return toDoList.get(index);
     }
+
+    /**
+     * Searches for tasks by title.
+     * @param title The title of the task to search for.
+     * @return A list of tasks that match the given title.
+     */
+    public List<Task> searchTasksByTitle(String title) {
+        List<Task> foundTasks = new ArrayList<>();
+        for (Task task : toDoList) {
+            if (task.getTitle().equalsIgnoreCase(title)) {
+                foundTasks.add(task);
+            }
+        }
+        return foundTasks;
+    }
 }
 
