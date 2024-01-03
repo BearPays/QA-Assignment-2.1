@@ -4,6 +4,8 @@ import org.testng.annotations.*;
 import static org.testng.Assert.*;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
@@ -11,7 +13,7 @@ public class TestNGTests {
     private ToDoList toDoList;
     private FileHandler fileHandler;
 
-    @BeforeMethod(groups = {"file-operations", "task-manipulations", "task-search", "task-status"})
+    @BeforeMethod(groups = {"file-operations", "task-manipulations", "task-search", "task-status", "parallel"})
     public void setUp() {
         toDoList = new ToDoList();
         fileHandler = new FileHandler();
@@ -75,6 +77,16 @@ public class TestNGTests {
         assertEquals(toDoList.getTaskInToDo(toDoList.getToDoList().size() - 1).getTitle(), title);
     }
 
+    @Parameters({"due-dates"})
+    @Test(groups = {"task-manipulations"})
+    public void setProjectDate(String dateString) throws ParseException {
+        SimpleDateFormat sdf = new SimpleDateFormat("MM-dd-yyyy");
+        Date date = sdf.parse(dateString);
+        Task task = new Task();
+        task.setDueDate(date);
+
+        assertEquals(task.getDueDate(), date);
+    }
 
     // Group: Task Search
     @Test(groups = {"task-search"}, priority = 3)
@@ -120,7 +132,7 @@ public class TestNGTests {
         assertEquals(completedCount, 1);
     }
 
-    @Test(groups = {"task-manipulations"}, threadPoolSize = 5, invocationCount = 5, timeOut = 1000, priority = 4)
+    @Test(groups = {"parallel"}, threadPoolSize = 5, invocationCount = 5, timeOut = 1000, priority = 4)
     public void parallelTaskAdditionTest() {
         String taskTitle = "Task" + Math.random();
         Task task = new Task();

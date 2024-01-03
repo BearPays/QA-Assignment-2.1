@@ -14,6 +14,10 @@
     </test>
 
     <test name="TaskManipulationsTests">
+        <parameter name="due-dates" value="12-24-2023"/>
+        <parameter name="due-dates" value="03-03-2024"/>
+        <parameter name="due-dates" value="02-20-2025"/>
+        <parameter name="due-dates" value="02-29-2024"/>
         <groups>
             <run>
                 <include name="task-manipulations"/>
@@ -39,6 +43,17 @@
         <groups>
             <run>
                 <include name="task-status"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="ToDoApp.TestNGTests"/>
+        </classes>
+    </test>
+
+    <test name="ParallelTests" parallel="methods">
+        <groups>
+            <run>
+                <include name="parallel"/>
             </run>
         </groups>
         <classes>
