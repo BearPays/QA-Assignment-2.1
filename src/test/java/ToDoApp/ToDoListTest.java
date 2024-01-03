@@ -1,13 +1,12 @@
 package ToDoApp;
 
-import ToDoApp.Task;
-import ToDoApp.ToDoList;
-import org.junit.jupiter.api.Test;
-
+import org.testng.Assert;
+import org.testng.annotations.Test;
+import org.testng.asserts.SoftAssert;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
+
 
 public class ToDoListTest {
 
@@ -23,14 +22,13 @@ public class ToDoListTest {
 
         toDoList.addToDo(task);
 
-        assertEquals(initialSize + 1, toDoList.getToDoList().size());
+        Assert.assertEquals(toDoList.getToDoList().size(), initialSize + 1);
     }
 
-    @Test
+    @Test(expectedExceptions = IndexOutOfBoundsException.class)
     public void removeTaskThrowsIndexOutOfBounds() {
         ToDoList list = new ToDoList();
-
-        assertThrows(IndexOutOfBoundsException.class, () -> list.remove(list.getToDoList().size()));
+        list.remove(list.getToDoList().size()); // Directly perform the action that should throw the exception
     }
 
     @Test
@@ -46,7 +44,8 @@ public class ToDoListTest {
 
         toDoList.remove(0);
 
-        assertEquals(initialSize - 1, toDoList.getToDoList().size());
+        Assert.assertEquals(toDoList.getToDoList().size(), initialSize - 1);
+
     }
 
     @Test
@@ -60,7 +59,7 @@ public class ToDoListTest {
 
         final Task retrievedFirstTask = toDoList.getTaskInToDo(0);
 
-        assertEquals(retrievedFirstTask, task);
+        Assert.assertEquals(retrievedFirstTask, task);
     }
 
     @Test
@@ -72,7 +71,7 @@ public class ToDoListTest {
 
         final List<Task> retrievedList = toDoList.getToDoList();
 
-        assertEquals(retrievedList, list);
+        Assert.assertEquals(retrievedList, list);
     }
 
 }

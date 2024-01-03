@@ -2,13 +2,13 @@ package ToDoApp;
 
 import ToDoApp.Status;
 import ToDoApp.Task;
-import org.junit.jupiter.api.Test;
+import org.testng.Assert;
+import org.testng.annotations.Test;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-import static org.junit.jupiter.api.Assertions.*;
 
 public class TaskTest {
 
@@ -21,7 +21,7 @@ public class TaskTest {
         final String initialTitle = task.getTitle();
 
 
-        assertEquals(initialTitle, "Homework");
+        Assert.assertEquals(initialTitle, "Homework");
     }
 
     @Test
@@ -35,7 +35,7 @@ public class TaskTest {
         final String changedTitle = task.getTitle();
 
 
-        assertEquals(changedTitle, "Homework" + "Change");
+        Assert.assertEquals(changedTitle, "HomeworkChange");
     }
 
     @Test
@@ -47,7 +47,7 @@ public class TaskTest {
         final String initialProjectName = task.getProjectName();
 
 
-        assertEquals(initialProjectName, "Study");
+        Assert.assertEquals(initialProjectName, "Study");
     }
 
     @Test
@@ -61,7 +61,7 @@ public class TaskTest {
         final String changedProjectName = task.getProjectName();
 
 
-        assertEquals(changedProjectName, "Study" + "Change");
+        Assert.assertEquals(changedProjectName, "StudyChange");
     }
 
     @Test
@@ -75,7 +75,7 @@ public class TaskTest {
         Date setDate = task.getDueDate();
         Date testedDate = new SimpleDateFormat( "yyyyMMdd" ).parse( "20100520" );
 
-        assertEquals(setDate, testedDate);
+        Assert.assertEquals(setDate, testedDate);
     }
 
     @Test
@@ -86,7 +86,7 @@ public class TaskTest {
         task.setStatus(Status.DONE);
         Status retrievedStatus = task.getStatus();
 
-        assertEquals(retrievedStatus, Status.DONE);
+        Assert.assertEquals(retrievedStatus, Status.DONE);
     }
 
     @Test
@@ -98,7 +98,7 @@ public class TaskTest {
         task.setStatus(Status.PENDING);
         Status retrievedStatus = task.getStatus();
 
-        assertEquals(retrievedStatus, Status.PENDING);
+        Assert.assertEquals(retrievedStatus, Status.PENDING);
     }
 
 
